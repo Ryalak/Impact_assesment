@@ -19,12 +19,13 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer{
     public String summarizeCollection(Collection<Integer> input){
         ArrayList<Integer> numbers = new ArrayList<>(input);
         StringBuilder output = new StringBuilder();
+        int inputSize = numbers.size();
 
-        for(int i = 0; i < numbers.size(); i++){
+        for(int i = 0; i < inputSize; i++){
             int start = numbers.get(i);
             int end = start;
 
-            while(i + 1 < numbers.size() && numbers.get(i + 1) == numbers.get(i) + 1){
+            while(i + 1 < inputSize && numbers.get(i + 1) == numbers.get(i) + 1){
                 end = numbers.get(i + 1);
                 i++;
             }
@@ -36,7 +37,7 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer{
                 output.append(start).append("-").append(end);
             }
 
-            if (i < numbers.size() - 1) {
+            if (i < inputSize - 1) {
                 output.append(", ");
             }
         } 
