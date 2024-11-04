@@ -11,7 +11,7 @@ class NumberRangeSummarizerImplTest {
     /**
     * @author Ryan Lake
     * 
-    * Assuming the input has no duplicates and correct comma delimited list of numbers, it should handle all inputs.
+    * Assuming the input has no duplicates right after each other and correct comma delimited list of numbers, it should handle all inputs.
     */
 
     private final NumberRangeSummarizer summarizer = new NumberRangeSummarizerImpl();
@@ -29,7 +29,7 @@ class NumberRangeSummarizerImplTest {
         String input = "1, 2, 4, a, 7, 8, 10";
         Collection<Integer> expected = Arrays.asList(1, 2, 4, 7, 8, 10);
         Collection<Integer> result = summarizer.collect(input);
-        assertEquals(expected, result, "Should collect numbers correctly from valid input");
+        assertEquals(expected, result, "Should collect numbers correctly from invalid input");
     }
 
     @Test
