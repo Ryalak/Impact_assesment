@@ -1,4 +1,4 @@
-package numberrangesmmarizer;
+package numberarrangesummarizer;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +11,11 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer{
         Collection<Integer> numbers = new ArrayList<Integer>();
 
         for(String part : parts){
-            numbers.add(Integer.parseInt(part.trim()));
+            try {
+                numbers.add(Integer.parseInt(part.trim()));
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input: '" + part + "' is not a valid integer.");
+            }
         }
         return numbers;
     }
@@ -49,11 +53,16 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer{
         NumberRangeSummarizer summarizer = new NumberRangeSummarizerImpl();
         Scanner keyboard = new Scanner(System.in);
 
-        String input = keyboard.nextLine();
-        keyboard.close();
-        Collection<Integer> collectedNumbers = summarizer.collect(input);
-        String summarized = summarizer.summarizeCollection(collectedNumbers);
-
-        System.out.println(summarized);
+        try {
+            System.out.println("Enter a comma-separated list of numbers:");
+            String input = keyboard.nextLine();
+            Collection<Integer> collectedNumbers = summarizer.collect(input);
+            String summarized = summarizer.summarizeCollection(collectedNumbers);
+            System.out.println(summarized);
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+        } finally {
+            keyboard.close();
+        }
     }
 }

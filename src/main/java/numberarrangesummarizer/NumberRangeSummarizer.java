@@ -1,4 +1,4 @@
-package numberrangesmmarizer;
+package numberarrangesummarizer;
 
 import java.util.Collection;
 
