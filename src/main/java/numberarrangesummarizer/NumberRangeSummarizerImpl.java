@@ -14,7 +14,7 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer{
             try {
                 numbers.add(Integer.parseInt(part.trim()));
             } catch (NumberFormatException e) {
-                System.err.println("Invalid input: '" + part + "' is not a valid integer.");
+                System.err.println("Invalid input: '" + part.trim() + "' is not a valid integer.");
             }
         }
         return numbers;

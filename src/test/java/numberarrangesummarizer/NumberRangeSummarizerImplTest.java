@@ -25,6 +25,14 @@ class NumberRangeSummarizerImplTest {
     }
 
     @Test
+    void testCollectInvalidInput() {
+        String input = "1, 2, 4, a, 7, 8, 10";
+        Collection<Integer> expected = Arrays.asList(1, 2, 4, 7, 8, 10);
+        Collection<Integer> result = summarizer.collect(input);
+        assertEquals(expected, result, "Should collect numbers correctly from valid input");
+    }
+
+    @Test
     void testCollectManySpaces() {
         String input = "1, 2,  4,    7,8";
         Collection<Integer> expected = Arrays.asList(1, 2, 4, 7, 8); 
